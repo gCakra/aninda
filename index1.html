@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Aninda - My Digital Love Letter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- CSS Variables (Default Dark Theme) --- */
+      :root {
+        --bg-color: #1a1a1b;
+        --text-color: #f5f5f5;
+        --accent-gold: #d4af37;
+        --accent-pink: #f4c2c2;
+        --soft-navy: #a0a0a0;
+        --card-bg: #2d2d2e;
+        --transition: all 0.5s ease;
+      }
+
+      /* --- Light Mode Variables --- */
+      [data-theme="light"] {
+        --bg-color: #fff9f9;
+        --text-color: #2c3e50;
+        --card-bg: #ffffff;
+        --soft-navy: #1b263b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+      }
+
+      /* --- Global Components --- */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Theme Toggle Button --- */
+      .theme-switch {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: var(--accent-gold);
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        font-size: 1.2rem;
+      }
+
+      /* --- Hero Section --- */
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(
+            rgba(26, 26, 27, 0.7),
+            rgba(26, 26, 27, 0.7)
+          ),
+          url("img/Gemini_Generated_Image_tj4gfltj4gfltj4g.png");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        color: var(--text-color);
+      }
+
+      .hero-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 4rem;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+        animation: fadeInDown 2s ease;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-sub {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.3rem;
+        max-width: 600px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Gallery --- */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin: 50px 0;
+      }
+
+      .memory-card {
+        background: var(--card-bg);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: var(--transition);
+        overflow: hidden;
+      }
+
+      .memory-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .memory-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .memory-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .memory-card p {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--text-color);
+      }
+
+      /* --- Main Message --- */
+      .main-letter {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        text-align: justify;
+        background: var(--card-bg);
+        padding: 40px;
+        border-left: 5px solid var(--accent-gold);
+        border-radius: 8px;
+        margin: 50px 0;
+        white-space: pre-line;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- Quote Box --- */
+      .quote-box {
+        text-align: center;
+        padding: 40px 30px;
+        border: 2px solid var(--accent-pink);
+        border-radius: 12px;
+        margin: 50px 0;
+        position: relative;
+        background: var(--card-bg);
+      }
+
+      .quote-box::before {
+        content: "";
+        font-size: 5rem;
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--accent-pink);
+        background: var(--card-bg);
+        padding: 0 10px;
+      }
+
+      /* --- Music Embed --- */
+      .music-player {
+        margin: 60px 0;
+        text-align: center;
+        padding: 20px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- Footer --- */
+      footer {
+        text-align: center;
+        padding: 80px 0;
+        margin-top: 50px;
+        border-top: 1px solid var(--card-bg);
+      }
+
+      .back-btn {
+        display: inline-block;
+        background: var(--accent-gold);
+        color: var(--bg-color);
+        border: none;
+        padding: 12px 35px;
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .back-btn:hover {
+        background: var(--accent-pink);
+        color: var(--bg-color);
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-switch" id="themeToggle" title="Ganti Tema">💡</button>
+
+    <header id="top">
+      <h1 class="hero-title">Untuk Aninda</h1>
+      <p class="hero-sub">
+        "Sebuah kejutan di tahun 2025 yang bahkan belum pernah ku bayangkan,
+        bisa bertemu wanita secantik dirimu"
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="reveal">
+        <h2
+          style="
+            text-align: center;
+            font-family: 'Playfair Display';
+            margin-bottom: 30px;
+            color: var(--accent-gold);
+          "
+        >
+          Permulaan Segalanya
+        </h2>
+        <p style="text-align: center; font-size: 1.1rem">
+          Berawal dari teman mabar game, siapa sangka pertemuan sederhana itu
+          membuka lembaran baru dalam hidupku. waktu pertama aku dengar suaramu
+          aku sudah berpikir betapa cantiknya pemilik suara merdu itu. dan
+          ternyata benar itu diluar expetasiku kamu jauh lebih cantik dari yang
+          aku bayangkan.
+        </p>
+      </section>
+
+      <section class="gallery">
+        <div class="memory-card reveal">
+          <img src="img/DSC01289.jpg" alt="Momen Ceria" />
+          <p>
+            <strong>Desember 2025</strong> - Tawamu saat itu, senjata paling
+            ampuh untuk meluluhkan hatiku.
+          </p>
+        </div>
+        <div class="memory-card reveal">
+          <img src="img/DSC01292.jpg" alt="Gaya Lucu" />
+          <p>
+            <strong>Desember 2025</strong> - Selalu ada tingkah lucumu yang
+            membuat hari-hariku lebih berwarna.
+          </p>
+        </div>
+        <div class="memory-card reveal">
+          <img src="img/DSC01293.jpg" alt="Percaya Diri" />
+          <p>
+            <strong>Desember 2025</strong> - Pakai foto baru semua ajalah
+            soalnya foto lama masih bocil katanya.
+          </p>
+        </div>
+      </section>
+
+      <section class="main-letter reveal">
+        <h3 style="color: var(--accent-gold); margin-bottom: 20px">
+          Mengapa Kamu?
+        </h3>
+        <p>
+          entah kenapa setiap ku melihatmu kamu semakin cantik anjir lah,
+          padahal niat awal ingin sendiri sampek sukses tapi lihat kamu makin
+          hari makin cantik dan i mute jadi takut diambil orang njir itupun kek
+          gak nyangka banget aku yang jarang bergaul bisa kenal cewek, itupun
+          bukan sembarang cewek tapi langsung kenal cewek cantik anjir. kayaknya
+          aku udah jatuh hati padamu anjir tapi gak perlu terburu-buru aku bisa
+          menikmati proses ini kok, aku yakin ini bukan sekedar ketertarikan
+          fisik aja tapi aku pengen kenal kamu lebih dalam maaf aku gak berani
+          ngomong ini langsung ke kamu soalnya aku takut kamu kaget dan gak
+          terima, jadi aku tulis aja di surat
+        </p>
+      </section>
+
+      <div class="quote-box reveal">
+        <p style="font-size: 1.2rem; font-style: italic">
+          "ini adalah bukti bahwa bukan paras mu aja yang cantik tapi hatimu
+          juga kupersembahkan lagu virgoun untukmu sorry kalau jamet bet ."
+        </p>
+      </div>
+
+      <div class="music-player reveal">
+        <p style="margin-bottom: 15px; font-weight: bold">
+          🎶 Lagu Ini dipersembahakn untuk ninda:
+        </p>
+        <iframe
+          data-testid="embed-iframe"
+          style="border-radius: 12px"
+          src="https://open.spotify.com/embed/track/5o6StwqqVfG3vRLx8UP310?utm_source=generator"
+          width="100%"
+          height="352"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <footer>
+        <p class="reveal">Dengan tulus dan penuh perasaan,</p>
+        <p
+          class="reveal"
+          style="
+            font-family: 'Great Vibes';
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin: 20px 0;
+          "
+        >
+          Orang yang Beruntung Bisa Mengenalmu
+        </p>
+        <a href="#top" class="back-btn reveal">Kembali ke Awal</a>
+      </footer>
+    </main>
+
+    <script>
+      // 1. Reveal Animation on Scroll
+      window.addEventListener("scroll", reveal);
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var revealTop = reveals[i].getBoundingClientRect().top;
+          var revealPoint = 150;
+          if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      // 2. Dark Mode Toggle (Modified for dark theme default)
+      const themeToggle = document.getElementById("themeToggle");
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = document.body.getAttribute("data-theme");
+        if (currentTheme === "light") {
+          document.body.removeAttribute("data-theme");
+          themeToggle.innerHTML = "💡"; // Ikon untuk beralih ke mode terang
+        } else {
+          document.body.setAttribute("data-theme", "light");
+          themeToggle.innerHTML = "🌙"; // Ikon untuk beralih ke mode gelap
+        }
+      });
+
+      // Trigger reveal on initial load in case elements are already in view
+      reveal();
+    </script>
+  </body>
+</html>
